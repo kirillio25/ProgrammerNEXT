@@ -5,13 +5,13 @@
     <div class="page-title">
       <div class="row">
         <div class="col-sm-6">
-          <h3>Detailed Course</h3>
+          <h3>Python</h3>
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{ route('dashboard') }}"><i data-feather="home"></i></a></li>
-            <li class="breadcrumb-item">Learning</li>
-            <li class="breadcrumb-item active">Detailed Course</li>
+            <li class="breadcrumb-item">Обучение</li>
+            <li class="breadcrumb-item active">Описание</li>
           </ol>
         </div>
       </div>
@@ -41,11 +41,15 @@
                   </div>
                 </div>
               </div>
+              <div class="card-body">
+                  <a href="{{ route('gallery_with_description') }}" class="btn btn-primary text-center" 
+                  type="button">Изучать</a>
+              </div>
             </div>
           </div>
           <div class="card comment-box">
             <div class="card-body">
-              <h4>Comment</h4>
+              <h4>Комментарии</h4>
               <ul>
                 <li>
                   <div class="d-md-flex"><img class="align-self-center" src="{{ asset('assets/images/blog/comment.jpg') }}" alt="Generic placeholder image">
@@ -110,18 +114,18 @@
                   <div class="card">
                     <div class="card-header">
                       <h5 class="mb-0 p-0">
-                        <button class="btn btn-link ps-0" data-bs-toggle="collapse" data-bs-target="#collapseicon" aria-expanded="true" aria-controls="collapseicon">Find Course</button>
+                        <button class="btn btn-link ps-0" data-bs-toggle="collapse" data-bs-target="#collapseicon" aria-expanded="true" aria-controls="collapseicon">Фильтр</button>
                       </h5>
                     </div>
                     <div class="collapse show" id="collapseicon" aria-labelledby="collapseicon" data-bs-parent="#accordion">
                       <div class="card-body filter-cards-view animate-chk">
                         <div class="job-filter">
                           <div class="faq-form">
-                            <input class="form-control" type="text" placeholder="Search.."><i class="search-icon" data-feather="search"></i>
+                            <input class="form-control" type="text" placeholder="Поиск.."><i class="search-icon" data-feather="search"></i>
                           </div>
                         </div>
                         <div class="checkbox-animated">
-                          <div class="learning-header"><span class="f-w-600">Categories</span></div>
+                          <div class="learning-header"><span class="f-w-600">Категории</span></div>
                           <label class="d-block" for="chk-ani">
                             <input class="checkbox_animated" id="chk-ani" type="checkbox">Accounting
                           </label>
@@ -136,7 +140,7 @@
                           </label>
                         </div>
                         <div class="checkbox-animated mt-0">
-                          <div class="learning-header"><span class="f-w-600">Duration</span></div>
+                          <div class="learning-header"><span class="f-w-600">Время</span></div>
                           <label class="d-block" for="chk-ani6">
                             <input class="checkbox_animated" id="chk-ani6" type="checkbox">0-50 hours
                           </label>
@@ -148,7 +152,7 @@
                           </label>
                         </div>
                         <div class="checkbox-animated mt-0">
-                          <div class="learning-header"><span class="f-w-600">Price</span></div>
+                          <div class="learning-header"><span class="f-w-600">Цена</span></div>
                           <label class="d-block" for="edo-ani">
                             <input class="radio_animated" id="edo-ani" type="radio" name="rdo-ani" checked="">All Courses
                           </label>
@@ -160,7 +164,7 @@
                           </label>
                         </div>
                         <div class="checkbox-animated mt-0">
-                          <div class="learning-header"><span class="f-w-600">Status</span></div>
+                          <div class="learning-header"><span class="f-w-600">Статус</span></div>
                           <label class="d-block" for="chk-ani3">
                             <input class="checkbox_animated" id="chk-ani3" type="checkbox">Registration
                           </label>
@@ -171,12 +175,12 @@
                             <input class="checkbox_animated" id="chk-ani5" type="checkbox">Completed
                           </label>
                         </div>
-                        <button class="btn btn-primary text-center" type="button">Filter</button>
+                        <button class="btn btn-primary text-center" type="button">Приминить</button>
                       </div>
                     </div>
                   </div>
                 </div>
-                <div class="col-xl-12">
+                <!-- <div class="col-xl-12">
                   <div class="card">
                     <div class="card-header">
                       <h5 class="mb-0 p-0">
@@ -202,8 +206,8 @@
                       </div>
                     </div>
                   </div>
-                </div>
-                <div class="col-xl-12">
+                </div> -->
+                <!-- <div class="col-xl-12">
                   <div class="card">
                     <div class="card-header">
                       <h5 class="mb-0 p-0">
@@ -260,7 +264,7 @@
                       </div>
                     </div>
                   </div>
-                </div>
+                </div> -->
               </div>
             </div>
           </div>

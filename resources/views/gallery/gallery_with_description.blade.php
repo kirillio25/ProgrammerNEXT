@@ -9,13 +9,13 @@
         <div class="page-title">
             <div class="row">
                 <div class="col-sm-6">
-                    <h3>Gallery Grid With Description</h3>
+                    <h3>Python</h3>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{{ route('dashboard') }}"> <i data-feather="home"></i></a></li>
-                        <li class="breadcrumb-item">Gallery</li>
-                        <li class="breadcrumb-item active"> Gallery Grid With Description</li>
+                        <li class="breadcrumb-item">Курс</li>
+                        <li class="breadcrumb-item active"> Python</li>
                     </ol>
                 </div>
             </div>
@@ -26,43 +26,28 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="card">
-                    <div class="card-header pb-0">
-                        <h4>IMAGE GALLERY WITH DESCRIPTION</h4>
-                    </div>
                     <div class="card-body">
                         <div class="my-gallery row gallery-with-description" itemscope="">
-                            <figure class="col-xl-3 col-sm-6 xl-33 box-col-33" itemprop="associatedMedia" itemscope=""><a
-                                    href="{{ asset('assets/images/big-lightgallry/01.jpg') }}" itemprop="contentUrl"
-                                    data-size="1600x950"><img src="{{ asset('assets/images/lightgallry/01.jpg') }}"
+                            <div class="col-xl-3 col-sm-6 xl-33 box-col-33"><a href="{{ route('according') }}">
+                                <img src="{{ asset('assets/images/lightgallry/01.jpg') }}"
                                         itemprop="thumbnail" alt="Image description">
                                     <div class="caption">
-                                        <h4>Portfolio Title</h4>
+                                        <h4>Основы python 1</h4>
                                         <p class="mb-0">is simply dummy text of the printing and typesetting industry.
                                             Lorem Ipsum has been the industry's standard dummy.</p>
                                     </div>
                                 </a>
-                                <figcaption itemprop="caption description">
-                                    <h4>Portfolio Title</h4>
-                                    <p class="mb-0">is simply dummy text of the printing and typesetting industry. Lorem
-                                        Ipsum has been the industry's standard dummy.</p>
-                                </figcaption>
-                            </figure>
-                            <figure class="col-xl-3 col-sm-6 xl-33 box-col-33" itemprop="associatedMedia" itemscope=""><a
-                                    href="{{ asset('assets/images/big-lightgallry/02.jpg') }}" itemprop="contentUrl"
-                                    data-size="1600x950"><img src="{{ asset('assets/images/lightgallry/02.jpg') }}"
+                            </div>
+                            <div class="col-xl-3 col-sm-6 xl-33 box-col-33"><a href="{{ route('according') }}">
+                                <img src="{{ asset('assets/images/lightgallry/02.jpg') }}"
                                         itemprop="thumbnail" alt="Image description">
                                     <div class="caption">
-                                        <h4>Portfolio Title</h4>
+                                        <h4>Основы python 2</h4>
                                         <p class="mb-0">is simply dummy text of the printing and typesetting industry.
                                             Lorem Ipsum has been the industry's standard dummy.</p>
                                     </div>
                                 </a>
-                                <figcaption itemprop="caption description">
-                                    <h4>Portfolio Title</h4>
-                                    <p class="mb-0">is simply dummy text of the printing and typesetting industry. Lorem
-                                        Ipsum has been the industry's standard dummy.</p>
-                                </figcaption>
-                            </figure>
+                            </div>
                             <figure class="col-xl-3 col-sm-6 xl-33 box-col-33" itemprop="associatedMedia" itemscope=""><a
                                     href="{{ asset('assets/images/big-lightgallry/03.jpg') }}" itemprop="contentUrl"
                                     data-size="1600x950"><img src="{{ asset('assets/images/lightgallry/03.jpg') }}"
@@ -344,7 +329,7 @@
 @endsection
 
 @section('scripts')
-    <script src="{{ asset('assets/js/photoswipe/photoswipe.min.js') }}"></script>
+    <!-- <script src="{{ asset('assets/js/photoswipe/photoswipe.min.js') }}"></script>
     <script src="{{ asset('assets/js/photoswipe/photoswipe-ui-default.min.js') }}"></script>
-    <script src="{{ asset('assets/js/photoswipe/photoswipe.js') }}"></script>
+    <script src="{{ asset('assets/js/photoswipe/photoswipe.js') }}"></script> -->
 @endsection
