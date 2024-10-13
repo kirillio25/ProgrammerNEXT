@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LearningController;
 
 /*
 |--------------------------------------------------------------------------
@@ -300,8 +301,11 @@ Route::view('job-details', 'job_search.job_details')->name('job_details');
 Route::view('job-apply', 'job_search.job_apply')->name('job_apply');
 
 //learning
-Route::view('learning-list-view', 'learning.learning_list_view')->name('learning_list_view');
-Route::view('learning-detailed', 'learning.learning_detailed')->name('learning_detailed');
+// Route::view('learning-list-view', 'learning.learning_list_view')->name('learning_list_view');
+Route::get('learning-list-view', [LearningController::class, 'index'])->name('learning_list_view');
+
+Route::get('learning-detailed/{id}', [LearningController::class, 'coursDetailed'])->name('learning_detailed');
+// Route::view('learning-detailed', 'learning.learning_detailed')->name('learning_detailed');
 
 //maps
 Route::view('map-js', 'maps.map_js')->name('map_js');

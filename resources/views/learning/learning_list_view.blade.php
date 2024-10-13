@@ -22,121 +22,24 @@
     <div class="row learning-block">
       <div class="col-xxl-9 col-xl-8 box-col-8">
         <div class="row">
+          @foreach($courses as $course)
           <div class="col-xl-4 xl-50 col-sm-6 box-col-6">
             <div class="card">
               <div class="product-box learning-box">
-                <div class="product-img"><img class="img-fluid top-radius-blog" src="{{ asset('assets/images/faq/3.jpg') }}" alt="">
-                    <a href="{{ route('learning_detailed') }}"> <div class="product-hover"></div></a>
+                <!-- 600 на 450  -->
+                <div class="product-img"><img class="img-fluid top-radius-blog" src="{{ asset('storage/' . $course->path_url) }}"alt="">
+                    <a href="{{ route('learning_detailed', ['id' => $course->id]) }}"> <div class="product-hover"></div></a>
                 </div>
-                <div class="details-main"><a href="{{ route('learning_detailed') }}">                                       
+                <div class="details-main"><a href="{{ route('learning_detailed', ['id' => $course->id]) }}">                                       
                     <div class="bottom-details"> 
-                      <h6>Web Devlopment.</h6>
+                      <h6>{{ $course->title }}</h6>
                     </div></a>
-                  <p>This course is designed to start you on a path toward future studies in web development and design.</p>
+                  <p>{{ $course->description }}</p>
                 </div>
               </div>
             </div>
           </div>
-          <div class="col-xl-4 xl-50 col-sm-6 box-col-6">
-            <div class="card">
-              <div class="product-box learning-box">
-                <div class="product-img"><img class="img-fluid top-radius-blog" src="{{ asset('assets/images/faq/1.jpg') }}" alt="">
-                  <div class="product-hover">
-                    <ul>
-                      <li><a href="{{ route('learning_detailed') }}"><i class="icon-link"></i></a></li>
-                      <li><a href="{{ route('learning_detailed') }}"><i class="icon-import"></i></a></li>
-                    </ul>
-                  </div>
-                </div>
-                <div class="details-main"><a href="{{ route('learning_detailed') }}">                                       
-                    <div class="bottom-details"> 
-                      <h6>Web Design.</h6>
-                    </div></a>
-                  <p>A Web Designing course belongs to the field of Computer Science and IT. It enables students to learn</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-xl-4 xl-50 col-sm-6 box-col-6">
-            <div class="card">
-              <div class="product-box learning-box">
-                <div class="product-img"><img class="img-fluid top-radius-blog" src="{{ asset('assets/images/faq/4.jpg') }}" alt="">
-                  <div class="product-hover">
-                    <ul>
-                      <li><a href="{{ route('learning_detailed') }}"><i class="icon-link"></i></a></li>
-                      <li><a href="{{ route('learning_detailed') }}"><i class="icon-import"></i></a></li>
-                    </ul>
-                  </div>
-                </div>
-                <div class="details-main"><a href="{{ route('learning_detailed') }}">                                       
-                    <div class="bottom-details"> 
-                      <h6>UX Development.</h6>
-                    </div></a>
-                  <p>User interface design (UI) is the design for machines and software, such as mobile devices, computers.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-xl-4 xl-50 col-sm-6 box-col-6">
-            <div class="card">
-              <div class="product-box learning-box">
-                <div class="product-img"><img class="img-fluid top-radius-blog" src="{{ asset('assets/images/faq/2.jpg') }}" alt="">
-                  <div class="product-hover">
-                    <ul>
-                      <li><a href="{{ route('learning_detailed') }}"><i class="icon-link"></i></a></li>
-                      <li><a href="{{ route('learning_detailed') }}"><i class="icon-import"></i></a></li>
-                    </ul>
-                  </div>
-                </div>
-                <div class="details-main"><a href="{{ route('learning_detailed') }}">                                       
-                    <div class="bottom-details"> 
-                      <h6>Spoken English</h6>
-                    </div></a>
-                  <p>Spoken English Courses are pursued by candidates from all levels to improve their communication skills.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-xl-4 xl-50 col-sm-6 box-col-6">
-            <div class="card">
-              <div class="product-box learning-box">
-                <div class="product-img"><img class="img-fluid top-radius-blog" src="{{ asset('assets/images/faq/4.jpg') }}" alt="">
-                  <div class="product-hover">
-                    <ul>
-                      <li><a href="{{ route('learning_detailed') }}"><i class="icon-link"></i></a></li>
-                      <li><a href="{{ route('learning_detailed') }}"><i class="icon-import"></i></a></li>
-                    </ul>
-                  </div>
-                </div>
-                <div class="details-main"><a href="{{ route('learning_detailed') }}">                                       
-                    <div class="bottom-details"> 
-                      <h6>Web Devlopment.</h6>
-                    </div></a>
-                  <p>This course is designed to start you on a path toward future studies in web development and design.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-xl-4 xl-50 col-sm-6 box-col-6">
-            <div class="card">
-              <div class="product-box learning-box">
-                <div class="product-img"><img class="img-fluid top-radius-blog" src="{{ asset('assets/images/faq/3.jpg') }}" alt="">
-                  <div class="product-hover">
-                    <ul>
-                      <li><a href="{{ route('learning_detailed') }}"><i class="icon-link"></i></a></li>
-                      <li><a href="{{ route('learning_detailed') }}"><i class="icon-import"></i></a></li>
-                    </ul>
-                </div>
-                </div>
-                <div class="details-main"><a href="{{ route('learning_detailed') }}">                                       
-                    <div class="bottom-details"> 
-                      <h6>Advance Design.</h6>
-                    </div></a>
-                  <p>A Web Development course belongs to the field of Computer Science and IT. It enables students to learn</p>
-                </div>
-              </div>
-            </div>
-          </div>
+          @endforeach
         </div>
       </div>
       <div class="col-xxl-3 col-xl-4 box-col-4">

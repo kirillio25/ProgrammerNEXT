@@ -360,7 +360,8 @@
                     </ul>
                   </div>
                 </div>
-                <div class="card-body"><a href="{{ route('learning_detailed') }}">
+                <div class="card-body">
+                  <a >
                     <h6>Web Design</h6></a>
                   <p class="mb-0">A Web Designing course belongs to the field of Computer It enables students to learn various techniques.</p>
                 </div>
@@ -385,7 +386,7 @@
                     </ul>
                   </div>
                 </div>
-                <div class="card-body"><a href="{{ route('learning_detailed') }}">
+                <div class="card-body"><a>
                     <h6>Web Development</h6></a>
                   <p class="mb-0">A Web Development course belongs to the field of Computer It enables students to learn various techniques.</p>
                 </div>
@@ -410,7 +411,7 @@
                     </ul>
                   </div>
                 </div>
-                <div class="card-body"><a href="{{ route('learning_detailed') }}">
+                <div class="card-body"><a>
                     <h6>UI Design</h6></a>
                   <p class="mb-0">User interface design (UI) is the design for machines and software, such as mobile devices, computers.</p>
                 </div>
@@ -435,7 +436,7 @@
                     </ul>
                   </div>
                 </div>
-                <div class="card-body"><a href="{{ route('learning_detailed') }}">
+                <div class="card-body"><a>
                     <h6>UX Design</h6></a>
                   <p class="mb-0">User Experience design (UX) is the design for machines and software, such as mobile devices, computers.</p>
                 </div>

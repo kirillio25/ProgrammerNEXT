@@ -45,7 +45,7 @@
                 </div>
                 <div class="col-xl-6 col-12">
                   <div class="blog-details">
-                    <div class="blog-date"><span>02</span> January 2023</div><a href="{{ route('learning_detailed') }}">
+                    <div class="blog-date"><span>02</span> January 2023</div><a>
                       <h6>Encounter every day.</h6></a>
                     <div class="blog-bottom-content">
                       <ul class="blog-social">
@@ -68,7 +68,7 @@
                 </div>
                 <div class="col-xl-6 col-12">
                   <div class="blog-details">
-                    <div class="blog-date"><span>03</span> January 2023</div><a href="{{ route('learning_detailed') }}">
+                    <div class="blog-date"><span>03</span> January 2023</div><a>
                       <h6>White color is important.</h6></a>
                     <div class="blog-bottom-content">
                       <ul class="blog-social">

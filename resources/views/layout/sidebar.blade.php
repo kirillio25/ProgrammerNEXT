@@ -330,7 +330,7 @@
             <li class="sidebar-list"><i class="fa fa-thumb-tack"></i><a class="sidebar-link sidebar-title" href="javascript:void(0)"><i data-feather="radio"></i><span>Learning</span></a>
               <ul class="sidebar-submenu">
                 <li><a href="{{ route('learning_list_view') }}">Learning List</a></li>
-                <li><a href="{{ route('learning_detailed') }}">Detailed Course</a></li>
+                <li><a>Detailed Course</a></li>
               </ul>
             </li>
             <li class="sidebar-list"><i class="fa fa-thumb-tack"></i><a class="sidebar-link sidebar-title" href="javascript:void(0)"><i data-feather="map"></i><span>Maps</span></a>
