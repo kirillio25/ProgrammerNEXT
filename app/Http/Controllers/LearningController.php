@@ -12,25 +12,11 @@ class LearningController extends Controller
     {
         $courses = Course::all();
 
-        $vars = [
-            "courses" => $courses,
-        ];
-        return view('learning.learning_list_view', $vars);
+        return view('learning.learning_list_view', ["courses" => $courses]);
     }
 
-    public function coursDetailed($id)
-    {
-
-        $course = Course::find($id);
-
-        if (!$course) {
-            abort(404);
-        }
-
-        $vars = [
-            "course" => $course,
-        ];
-        
-        return view('learning.learning_detailed', $vars);
+    public function courseDetail(Course $course)
+    {        
+        return view('learning.learning_detailed', ["course" => $course]);
     }
 }
