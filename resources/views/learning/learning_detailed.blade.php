@@ -5,7 +5,7 @@
     <div class="page-title">
       <div class="row">
         <div class="col-sm-6">
-          <h3>Python</h3>
+          <h3>Курс - Python</h3>
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb">
@@ -40,7 +40,7 @@
                 </div>
               </div>
               <div class="card-body">
-                  <a href="{{ route('gallery_with_description') }}" class="btn btn-primary text-center" 
+                  <a href="{{ route('learning_course_modules', ['course' => $course->id]) }}" class="btn btn-primary text-center" 
                   type="button">Изучать</a>
               </div>
             </div>

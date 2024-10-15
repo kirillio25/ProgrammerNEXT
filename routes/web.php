@@ -302,10 +302,12 @@ Route::view('job-apply', 'job_search.job_apply')->name('job_apply');
 
 //learning
 // Route::view('learning-list-view', 'learning.learning_list_view')->name('learning_list_view');
-Route::get('learning-list-view', [LearningController::class, 'index'])->name('learning_list_view');
-
-Route::get('learning-detailed/{course}', [LearningController::class, 'courseDetail'])->name('learning_detailed');
 // Route::view('learning-detailed', 'learning.learning_detailed')->name('learning_detailed');
+Route::get('learning-list-view', [LearningController::class, 'index'])->name('learning_list_view');
+Route::get('learning-detailed/{course}', [LearningController::class, 'courseDetail'])->name('learning_detailed');
+Route::get('learning-course-modules/{course}', [LearningController::class, 'moduleDetail'])->name('learning_course_modules');
+Route::get('learning-course-module-submodules/{module}', [LearningController::class, 'submoduleDetail'])->name('learning_course_module_submodules');
+
 
 //maps
 Route::view('map-js', 'maps.map_js')->name('map_js');

@@ -27,10 +27,10 @@
             <div class="card">
               <div class="product-box learning-box">
                 <!-- 600 на 450  -->
-                <div class="product-img"><img class="img-fluid top-radius-blog" src="{{ asset('storage/' . $course->path_url) }}"alt="">
-                    <a href="{{ route('learning_detailed', ['id' => $course->id]) }}"> <div class="product-hover"></div></a>
+                <div class="product-img"><img class="img-fluid top-radius-blog" src="{{ asset('storage/' . $course->path_url) }}" alt="">
+                    <a href="{{ route('learning_detailed', ['course' => $course->id]) }}"> <div class="product-hover"></div></a>
                 </div>
-                <div class="details-main"><a href="{{ route('learning_detailed', ['id' => $course->id]) }}">                                       
+                <div class="details-main"><a href="{{ route('learning_detailed', ['course' => $course->id]) }}">                                       
                     <div class="bottom-details"> 
                       <h6>{{ $course->title }}</h6>
                     </div></a>
