@@ -5,13 +5,13 @@
     <div class="page-title">
       <div class="row">
         <div class="col-sm-6">
-          <h3>Learning List</h3>
+          <h3>Курсы</h3>
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{ route('dashboard') }}"><i data-feather="home"></i></a></li>
-            <li class="breadcrumb-item">Learning</li>
-            <li class="breadcrumb-item active">Learning List</li>
+            <li class="breadcrumb-item">Обучение</li>
+            <li class="breadcrumb-item active">Курсы</li>
           </ol>
         </div>
       </div>
@@ -22,168 +22,24 @@
     <div class="row learning-block">
       <div class="col-xxl-9 col-xl-8 box-col-8">
         <div class="row">
-          <div class="col-xl-12 col-sm-6">
-            <div class="card">
-              <div class="blog-box blog-list row">
-                <div class="col-xl-5 col-12"><img class="img-fluid sm-100-w" src="{{ asset('assets/images/faq/1.jpg') }}" alt=""></div>
-                <div class="col-xl-7 col-12">
-                  <div class="blog-details">
-                    <div class="blog-date"><span>05</span> January 2022</div><a href="{{ route('learning_detailed') }}">
-                      <h6>Java Language </h6></a>
-                    <div class="blog-bottom-content">
-                      <ul class="blog-social">
-                        <li>by: Paige Turner</li>
-                        <li>15 Hits</li>
-                      </ul>
-                      <hr>
-                      <p class="mt-0">Java is an object-oriented programming language. Sun Microsystems first released Java in the year 1995. It is popularly used for developing Java applications in data centers, laptops, cell phones, game consoles, and scientific supercomputers. There are multiple websites and applications which will not work if Java is not installed.</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-xl-12 col-sm-6">
-            <div class="card">
-              <div class="blog-box blog-list row">
-                <div class="col-xl-5 col-12"><img class="img-fluid sm-100-w" src="{{ asset('assets/images/faq/2.jpg') }}" alt=""></div>
-                <div class="col-xl-7 col-12">
-                  <div class="blog-details">
-                    <div class="blog-date"><span>10</span> March 2021</div><a href="{{ route('learning_detailed') }}">
-                      <h6>Web Development </h6></a>
-                    <div class="blog-bottom-content">
-                      <ul class="blog-social">
-                        <li>by: Petey Cruiser</li>
-                        <li>34 Hits</li>
-                      </ul>
-                      <hr>
-                      <p class="mt-0">Web development is the work involved in developing a website for the Internet or an intranet (a private network).Web development can range from developing a simple single static page of plain text to complex web applications, electronic businesses, and social network services, and many more such applications and websites are being created every day.</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          @foreach($courses as $course)
           <div class="col-xl-4 xl-50 col-sm-6 box-col-6">
             <div class="card">
               <div class="product-box learning-box">
-                <div class="product-img"><img class="img-fluid top-radius-blog" src="{{ asset('assets/images/faq/3.jpg') }}" alt="">
-                  <div class="product-hover">
-                    <ul>
-                      <li><a href="{{ route('learning_detailed') }}"><i class="icon-link"></i></a></li>
-                      <li><a href="{{ route('learning_detailed') }}"><i class="icon-import"></i></a></li>
-                    </ul>
-                  </div>
+                <!-- 600 на 450  -->
+                <div class="product-img"><img class="img-fluid top-radius-blog" src="{{ asset('storage/' . $course->path_url) }}" alt="">
+                    <a href="{{ route('learning_detailed', ['course' => $course->id]) }}"> <div class="product-hover"></div></a>
                 </div>
-                <div class="details-main"><a href="{{ route('learning_detailed') }}">                                       
+                <div class="details-main"><a href="{{ route('learning_detailed', ['course' => $course->id]) }}">                                       
                     <div class="bottom-details"> 
-                      <h6>Web Devlopment.</h6>
+                      <h6>{{ $course->title }}</h6>
                     </div></a>
-                  <p>This course is designed to start you on a path toward future studies in web development and design.</p>
+                  <p>{{ $course->description }}</p>
                 </div>
               </div>
             </div>
           </div>
-          <div class="col-xl-4 xl-50 col-sm-6 box-col-6">
-            <div class="card">
-              <div class="product-box learning-box">
-                <div class="product-img"><img class="img-fluid top-radius-blog" src="{{ asset('assets/images/faq/1.jpg') }}" alt="">
-                  <div class="product-hover">
-                    <ul>
-                      <li><a href="{{ route('learning_detailed') }}"><i class="icon-link"></i></a></li>
-                      <li><a href="{{ route('learning_detailed') }}"><i class="icon-import"></i></a></li>
-                    </ul>
-                  </div>
-                </div>
-                <div class="details-main"><a href="{{ route('learning_detailed') }}">                                       
-                    <div class="bottom-details"> 
-                      <h6>Web Design.</h6>
-                    </div></a>
-                  <p>A Web Designing course belongs to the field of Computer Science and IT. It enables students to learn</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-xl-4 xl-50 col-sm-6 box-col-6">
-            <div class="card">
-              <div class="product-box learning-box">
-                <div class="product-img"><img class="img-fluid top-radius-blog" src="{{ asset('assets/images/faq/4.jpg') }}" alt="">
-                  <div class="product-hover">
-                    <ul>
-                      <li><a href="{{ route('learning_detailed') }}"><i class="icon-link"></i></a></li>
-                      <li><a href="{{ route('learning_detailed') }}"><i class="icon-import"></i></a></li>
-                    </ul>
-                  </div>
-                </div>
-                <div class="details-main"><a href="{{ route('learning_detailed') }}">                                       
-                    <div class="bottom-details"> 
-                      <h6>UX Development.</h6>
-                    </div></a>
-                  <p>User interface design (UI) is the design for machines and software, such as mobile devices, computers.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-xl-4 xl-50 col-sm-6 box-col-6">
-            <div class="card">
-              <div class="product-box learning-box">
-                <div class="product-img"><img class="img-fluid top-radius-blog" src="{{ asset('assets/images/faq/2.jpg') }}" alt="">
-                  <div class="product-hover">
-                    <ul>
-                      <li><a href="{{ route('learning_detailed') }}"><i class="icon-link"></i></a></li>
-                      <li><a href="{{ route('learning_detailed') }}"><i class="icon-import"></i></a></li>
-                    </ul>
-                  </div>
-                </div>
-                <div class="details-main"><a href="{{ route('learning_detailed') }}">                                       
-                    <div class="bottom-details"> 
-                      <h6>Spoken English</h6>
-                    </div></a>
-                  <p>Spoken English Courses are pursued by candidates from all levels to improve their communication skills.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-xl-4 xl-50 col-sm-6 box-col-6">
-            <div class="card">
-              <div class="product-box learning-box">
-                <div class="product-img"><img class="img-fluid top-radius-blog" src="{{ asset('assets/images/faq/4.jpg') }}" alt="">
-                  <div class="product-hover">
-                    <ul>
-                      <li><a href="{{ route('learning_detailed') }}"><i class="icon-link"></i></a></li>
-                      <li><a href="{{ route('learning_detailed') }}"><i class="icon-import"></i></a></li>
-                    </ul>
-                  </div>
-                </div>
-                <div class="details-main"><a href="{{ route('learning_detailed') }}">                                       
-                    <div class="bottom-details"> 
-                      <h6>Web Devlopment.</h6>
-                    </div></a>
-                  <p>This course is designed to start you on a path toward future studies in web development and design.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-xl-4 xl-50 col-sm-6 box-col-6">
-            <div class="card">
-              <div class="product-box learning-box">
-                <div class="product-img"><img class="img-fluid top-radius-blog" src="{{ asset('assets/images/faq/3.jpg') }}" alt="">
-                  <div class="product-hover">
-                    <ul>
-                      <li><a href="{{ route('learning_detailed') }}"><i class="icon-link"></i></a></li>
-                      <li><a href="{{ route('learning_detailed') }}"><i class="icon-import"></i></a></li>
-                    </ul>
-                </div>
-                </div>
-                <div class="details-main"><a href="{{ route('learning_detailed') }}">                                       
-                    <div class="bottom-details"> 
-                      <h6>Advance Design.</h6>
-                    </div></a>
-                  <p>A Web Development course belongs to the field of Computer Science and IT. It enables students to learn</p>
-                </div>
-              </div>
-            </div>
-          </div>
+          @endforeach
         </div>
       </div>
       <div class="col-xxl-3 col-xl-4 box-col-4">
@@ -195,18 +51,18 @@
                   <div class="card">
                     <div class="card-header">
                       <h5 class="mb-0 p-0">
-                        <button class="btn btn-link ps-0 ps-0" data-bs-toggle="collapse" data-bs-target="#collapseicon" aria-expanded="true" aria-controls="collapseicon">Find Course</button>
+                        <button class="btn btn-link ps-0 ps-0" data-bs-toggle="collapse" data-bs-target="#collapseicon" aria-expanded="true" aria-controls="collapseicon">Фильтр</button>
                       </h5>
                     </div>
                     <div class="collapse show" id="collapseicon" aria-labelledby="collapseicon" data-bs-parent="#accordion">
                       <div class="card-body filter-cards-view animate-chk">
                         <div class="job-filter">
                           <div class="faq-form">
-                            <input class="form-control" type="text" placeholder="Search.."><i class="search-icon" data-feather="search"></i>
+                            <input class="form-control" type="text" placeholder="Поиск.."><i class="search-icon" data-feather="search"></i>
                           </div>
                         </div>
                         <div class="checkbox-animated">
-                          <div class="learning-header"><span class="f-w-600">Categories</span></div>
+                          <div class="learning-header"><span class="f-w-600">Категории</span></div>
                           <label class="d-block" for="chk-ani">
                             <input class="checkbox_animated" id="chk-ani" type="checkbox">Accounting
                           </label>
@@ -221,7 +77,7 @@
                           </label>
                         </div>
                         <div class="checkbox-animated mt-0">
-                          <div class="learning-header"><span class="f-w-600">Duration</span></div>
+                          <div class="learning-header"><span class="f-w-600">Время</span></div>
                           <label class="d-block" for="chk-ani6">
                             <input class="checkbox_animated" id="chk-ani6" type="checkbox">0-50 hours
                           </label>
@@ -233,7 +89,7 @@
                           </label>
                         </div>
                         <div class="checkbox-animated mt-0">
-                          <div class="learning-header"><span class="f-w-600">Price</span></div>
+                          <div class="learning-header"><span class="f-w-600">Цена</span></div>
                           <label class="d-block" for="edo-ani">
                             <input class="radio_animated" id="edo-ani" type="radio" name="rdo-ani" checked="">All Courses
                           </label>
@@ -245,7 +101,7 @@
                           </label>
                         </div>
                         <div class="checkbox-animated mt-0">
-                          <div class="learning-header"><span class="f-w-600">Status</span></div>
+                          <div class="learning-header"><span class="f-w-600">Статус</span></div>
                           <label class="d-block" for="chk-ani3">
                             <input class="checkbox_animated" id="chk-ani3" type="checkbox">Registration
                           </label>
@@ -256,12 +112,13 @@
                             <input class="checkbox_animated" id="chk-ani5" type="checkbox">Completed
                           </label>
                         </div>
-                        <button class="btn btn-primary text-center" type="button">Filter</button>
+                        <button class="btn btn-primary text-center" type="button">Приминить</button>
                       </div>
                     </div>
                   </div>
                 </div>
-                <div class="col-xl-12">
+
+                <!-- <div class="col-xl-12">
                   <div class="card">
                     <div class="card-header">
                       <h5 class="mb-0 p-0">
@@ -287,8 +144,9 @@
                       </div>
                     </div>
                   </div>
-                </div>
-                <div class="col-xl-12">
+                </div> -->
+
+                <!-- <div class="col-xl-12">
                   <div class="card">
                     <div class="card-header">
                       <h5 class="mb-0 p-0">
@@ -345,7 +203,7 @@
                       </div>
                     </div>
                   </div>
-                </div>
+                </div> -->
               </div>
             </div>
           </div>
