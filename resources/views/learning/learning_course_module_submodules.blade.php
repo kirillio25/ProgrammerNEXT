@@ -38,10 +38,20 @@
             <div class="col-xxl-8 col-xl-7 box-col-7">
                 <div class="card">
                     <!-- <div class="card-header pb-0">
-                                    <h4>Color Accordion</h4><span>Add <code>.bg-*</code> class to add background color with
-                                        card-header.</span>
-                                </div> -->
+                                            <h4>Color Accordion</h4><span>Add <code>.bg-*</code> class to add background color with
+                                                card-header.</span>
+                                        </div> -->
                     <div class="card-body">
+                        @if ($errors->any())
+                            <div class="alert alert-danger m-3">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+
                         <div class="default-according" id="accordion1">
                             @foreach ($submodules as $index => $submodule)
                                 <div class="card">
@@ -91,33 +101,32 @@
                                                             @endforeach
                                                         </ul>
                                                     </ul>
+
                                                     <!-- Другие элементы -->
                                                 </div>
                                             </div>
-                                            @if ($errors->any())
-                                                <div class="alert alert-danger">
-                                                    <ul>
-                                                        @foreach ($errors->all() as $error)
-                                                            <li>{{ $error }}</li>
-                                                        @endforeach
-                                                    </ul>
+                                     
+                                            <!-- Кнопка загрузки работы -->
+                                            @if ($submissions[$submodule->id]['status_id'] == 1)
+                                                <div class="btn btn-warning" disabled>На проверке</div>
+                                            @elseif($submissions[$submodule->id]['status_id'] == 2)
+                                                <div class="btn btn-success" disabled>Удовлетворительно</div>
+                                            @else
+                                                <div class="btn btn-outline-primary ms-2"
+                                                    onclick="document.getElementById('file{{ $submodule->id }}').click();">
+                                                    <i data-feather="upload"></i> Загрузить работу
                                                 </div>
                                             @endif
 
-                                            <!-- Кнопка загрузки работы -->
-                                            <div class="btn btn-outline-primary ms-2"
-                                                onclick="document.getElementById('file').click();">
-                                                <i data-feather="upload"></i> Загрузить работу
-                                            </div>
-
                                             <!-- Скрытая форма для загрузки файла -->
-                                            <form id="uploadForm" action="{{ route('upload_homework') }}" method="POST"
+                                            <form id="uploadForm{{ $submodule->id }}"
+                                                action="{{ route('upload_homework') }}" method="POST"
                                                 enctype="multipart/form-data" style="display: none;">
                                                 @csrf
-                                                <input type="file" name="file" id="file" class="form-control"
-                                                    required style="display: none;" onchange="this.form.submit();">
+                                                <input type="file" name="file" id="file{{ $submodule->id }}"
+                                                    class="form-control" required style="display: none;"
+                                                    onchange="submitForm({{ $submodule->id }});">
                                                 <input type="hidden" name="submodule_id" value="{{ $submodule->id }}">
-                                                <!-- Укажите ID подмодуля -->
                                             </form>
                                         </div>
                                     </div>
@@ -132,6 +141,13 @@
     </div>
 @endsection
 
+<script>
+    function submitForm(submoduleId) {
+        // Находим форму по идентификатору и отправляем её
+        const form = document.getElementById(`uploadForm${submoduleId}`);
+        form.submit();
+    }
+</script>
 
 @section('scripts')
     <script src="{{ asset('assets/js/chart/apex-chart/moment.min.js') }}"></script>

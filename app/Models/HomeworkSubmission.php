@@ -12,7 +12,7 @@ class HomeworkSubmission extends Model
     protected $fillable = [
         'user_id',
         'submodule_id',
-        'homework_file_id',
         'path_url',
+        'status_id',
     ]; 
 }
