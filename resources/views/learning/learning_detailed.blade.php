@@ -1,5 +1,15 @@
 @extends('layout.master')
+<style>
+  .like-button {
+      display: flex;
+      align-items: center;
+  }
+  .like-button.liked {
+      color: #007bff; /* Цвет для "Liked" состояния */
+  }
+</style>
 
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 @section('main_content')
 <div class="container-fluid">
     <div class="page-title">
@@ -49,55 +59,69 @@
             <div class="card-body">
               <h4>Комментарии</h4>
               <ul>
-                <li>
-                  <div class="d-md-flex"><img class="align-self-center" src="{{ asset('assets/images/blog/comment.jpg') }}" alt="Generic placeholder image">
-                    <div class="flex-grow-1">
-                      <div class="row">
-                        <div class="col-md-4 xl-100 box-col-12"><a href="{{ route('user_profile') }}">
-                            <h6 class="mt-0">Jolio Mark<span> ( Designer )</span></h6></a></div>
-                        <div class="col-md-8 xl-100 box-col-12">
-                          <ul class="comment-social learning-comment">
-                            <li><i class="icofont icofont-thumbs-up"></i>02 Hits</li>
-                            <li><i class="icofont icofont-ui-chat"></i>598 Comments</li>
-                          </ul>
-                        </div>
-                      </div>
-                      <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text.</p>
-                    </div>
-                  </div>
-                </li>
-                <li>
-                  <ul>
+                @foreach ($comments as $comment)
+                  @if ($comment->parent_id === null)
                     <li>
-                      <div class="d-md-flex"><img class="align-self-center" src="{{ asset('assets/images/blog/9.jpg') }}" alt="Generic placeholder image">
+                      <div class="d-md-flex"><img class="align-self-center" src="{{ asset('assets/images/blog/comment.jpg') }}" alt="Generic placeholder image">
                         <div class="flex-grow-1">
                           <div class="row">
-                            <div class="col-xl-12"><a href="{{ route('user_profile') }}">
-                                <h6 class="mt-0">John deo<span> ( Designer )</span></h6></a></div>
+                            <div class="col-md-4 xl-100 box-col-12"><a href="{{ route('user_profile') }}">
+                                <h6 class="mt-0">{{ $comment->user->name }}</h6></a></div>
+                            {{-- <div class="col-md-8 xl-100 box-col-12">
+                              <ul class="comment-social learning-comment">
+                                <li><i class="icofont icofont-thumbs-up"></i>02 Hits</li>
+                                <li><i class="icofont icofont-ui-chat"></i>598 Comments</li>
+                              </ul>
+                            </div> --}}
                           </div>
-                          <p>The best thing is location and drive through the forest. The resort is 35km from Ramnagar. The gardens are well kept and maintained. Its a good place for relaxation away from the city noise. The staff is very friendly and overall we had a really good & fun time, thanks to staff member - Bhairav, Rajat, Gunanand, Lokesh & everyone else. And also we went for an adventurous night safari and saw barking deers, tuskar elephant.</p>
+                          <p>{{ $comment->content }}</p>
+
+                          <div class="container mt-1 d-flex justify-content-end align-items-center">
+                            <button id="likeButton" class="btn btn-light like-button me-2" onclick="toggleLike()">
+                                <i id="likeIcon" class="far fa-thumbs-up"></i>
+                                <span id="likeText"></span>
+                                <span id="likeCount" class="ms-2">0</span> <!-- Элемент для отображения количества лайков -->
+
+                            </button>
                         </div>
+                        
+
+                        </div>
+                        
                       </div>
                     </li>
-                  </ul>
-                </li>
-                <li>
-                  <div class="d-md-flex"><img class="align-self-center" src="{{ asset('assets/images/blog/4.jpg') }}" alt="Generic placeholder image">
-                    <div class="flex-grow-1">
-                      <div class="row">
-                        <div class="col-md-4 xl-100 box-col-12"><a href="{{ route('user_profile') }}">
-                            <h6 class="mt-0">Mark Jolio<span> ( Designer )</span></h6></a></div>
-                        <div class="col-md-8 xl-100 box-col-12">
-                          <ul class="comment-social learning-comment">
-                            <li><i class="icofont icofont-thumbs-up"></i>02 Hits</li>
-                            <li><i class="icofont icofont-ui-chat"></i>598 Comments</li>
-                          </ul>
-                        </div>
-                      </div>
-                      <p>Clean resort with maintained garden but rooms are average Lack of communication between the staff members. Receptionsit full of attitude. Arrogant staff. Except good view there is nothing great in this property.Resort is 35 kms away from Ramnagar Town.</p>
-                    </div>
-                  </div>
-                </li>
+
+                    
+
+                    <li>
+                      <ul>
+                        @foreach ($comments as $reply)
+                          @if ($reply->parent_id === $comment->id)
+                            <li>
+                              <div class="d-md-flex"><img class="align-self-center" src="{{ asset('assets/images/blog/9.jpg') }}" alt="Generic placeholder image">
+                                <div class="flex-grow-1">
+                                  <div class="row">
+                                    <div class="col-xl-12"><a href="{{ route('user_profile') }}">
+                                        <h6 class="mt-0">{{ $comment->user->name }}</h6></a></div>
+                                  </div>
+                                  <p>{{ $comment->content }}</p>
+                                  <div class="container mt-1 d-flex justify-content-end align-items-center">
+                                    <button id="likeButton" class="btn btn-light like-button me-2" onclick="toggleLike()">
+                                        <i id="likeIcon" class="far fa-thumbs-up"></i>
+                                        <span id="likeText"></span>
+                                        <span id="likeCount" class="ms-2">0</span> <!-- Элемент для отображения количества лайков -->
+        
+                                    </button>
+                                </div>
+                                </div>
+                              </div>
+                            </li>
+                          @endif
+                        @endforeach
+                      </ul>
+                    </li>
+                  @endif
+                @endforeach
               </ul>
             </div>
           </div>
@@ -178,96 +202,34 @@
                     </div>
                   </div>
                 </div>
-                <!-- <div class="col-xl-12">
-                  <div class="card">
-                    <div class="card-header">
-                      <h5 class="mb-0 p-0">
-                        <button class="btn btn-link ps-0" data-bs-toggle="collapse" data-bs-target="#collapseicon1" aria-expanded="true" aria-controls="collapseicon1">Categories</button>
-                      </h5>
-                    </div>
-                    <div class="collapse show" id="collapseicon1" aria-labelledby="collapseicon1" data-bs-parent="#accordion">
-                      <div class="categories">
-                        <div class="learning-header"><span class="f-w-600">Design</span></div>
-                        <ul>
-                          <li><a href="#">UI Design </a><span class="badge badge-primary pull-right">28</span></li>
-                          <li><a href="#">UX Design </a><span class="badge badge-primary pull-right">35</span></li>
-                          <li><a href="#">Interface Design </a><span class="badge badge-primary pull-right">17</span></li>
-                          <li><a href="#">User Experience </a><span class="badge badge-primary pull-right">26</span></li>
-                        </ul>
-                      </div>
-                      <div class="categories pt-0">
-                        <div class="learning-header"><span class="f-w-600">Development</span></div>
-                        <ul>
-                          <li><a href="#">Frontend Development</a><span class="badge badge-primary pull-right">48</span></li>
-                          <li><a href="#">Backend Development</a><span class="badge badge-primary pull-right">19</span></li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </div> -->
-                <!-- <div class="col-xl-12">
-                  <div class="card">
-                    <div class="card-header">
-                      <h5 class="mb-0 p-0">
-                        <button class="btn btn-link ps-0" data-bs-toggle="collapse" data-bs-target="#collapseicon2" aria-expanded="true" aria-controls="collapseicon2">Upcoming Courses</button>
-                      </h5>
-                    </div>
-                    <div class="collapse show" id="collapseicon2" aria-labelledby="collapseicon2" data-bs-parent="#accordion">
-                      <div class="upcoming-course card-body">
-                        <div class="d-flex">
-                          <div class="flex-grow-1"><span class="f-w-600">UX Development</span>
-                            <h6>Course By <a href="#"> Development Team</a></h6>
-                            <ul class="rating">
-                              <li><i class="fa fa-star font-warning"></i></li>
-                              <li><i class="fa fa-star font-warning"></i></li>
-                              <li><i class="fa fa-star font-warning"></i></li>
-                              <li><i class="fa fa-star font-warning"></i></li>
-                              <li><i class="fa fa-star-half-o font-warning"></i></li>
-                            </ul>
-                          </div>
-                          <div>
-                            <h5 class="mb-0 p-0 font-primary">18</h5><span class="d-block">Dec</span>
-                          </div>
-                        </div>
-                        <div class="d-flex">
-                          <div class="flex-grow-1"><span class="f-w-600">Business Analyst</span>
-                            <h6>Course By <a href="#">Analyst Team.</a></h6>
-                            <ul class="rating">
-                              <li><i class="fa fa-star font-warning"></i></li>
-                              <li><i class="fa fa-star font-warning"></i></li>
-                              <li><i class="fa fa-star font-warning"></i></li>
-                              <li><i class="fa fa-star font-warning"></i></li>
-                              <li><i class="fa fa-star-half-o font-warning"></i></li>
-                            </ul>
-                          </div>
-                          <div>
-                            <h5 class="mb-0 p-0 font-primary">28</h5><span class="d-block">Dec</span>
-                          </div>
-                        </div>
-                        <div class="d-flex">
-                          <div class="flex-grow-1"><span class="f-w-600">Web Development</span>
-                            <h6>Course By <a href="#">Designer</a></h6>
-                            <ul class="rating">
-                              <li><i class="fa fa-star font-warning"></i></li>
-                              <li><i class="fa fa-star font-warning"></i></li>
-                              <li><i class="fa fa-star font-warning"></i></li>
-                              <li><i class="fa fa-star font-warning"></i></li>
-                              <li><i class="fa fa-star-half-o font-warning"></i></li>
-                            </ul>
-                          </div>
-                          <div>
-                            <h5 class="mb-0 p-0 font-primary">5</h5><span class="d-block">Jan</span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div> -->
+               
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>    
+  </div>
+  
+  
+
+
+
+<script>
+  function toggleLike() {
+      const button = document.getElementById('likeButton');
+      const icon = document.getElementById('likeIcon');
+      const text = document.getElementById('likeText');
+
+      // Проверка, содержит ли кнопка класс "liked"
+      if (button.classList.contains('liked')) {
+          button.classList.remove('liked');
+          icon.classList.replace('fas', 'far'); // Изменение иконки
+      } else {
+          button.classList.add('liked');
+          icon.classList.replace('far', 'fas'); // Изменение иконки
+      }
+  }
+</script>
+
 @endsection

@@ -14,5 +14,6 @@ class HomeworkSubmission extends Model
         'submodule_id',
         'path_url',
         'status_id',
+        'deadline',
     ]; 
 }

@@ -13,6 +13,7 @@ use App\Models\Lesson;
 use App\Models\HomeworkFile;
 use App\Models\HomeworkSubmission;
 use App\Models\HomeworkStatuse;
+use App\Models\Comment;
 
 
 class LearningController extends Controller
@@ -26,7 +27,14 @@ class LearningController extends Controller
 
     public function courseDetail(Course $course)
     {
-        return view('learning.learning_detailed', ["course" => $course]);
+        // $comments = Comment::where('course_id', $course->id)->get();
+        $comments = Comment::with('user:id,name') // Получаем только id и name пользователя
+    ->where('course_id', $course->id)
+    ->get();
+    
+        return view('learning.learning_detailed', 
+        ["course" => $course,
+        'comments' => $comments]);
     }
 
     public function moduleDetail($course_id)
@@ -43,6 +51,7 @@ class LearningController extends Controller
         $submissions = [];
         $submodules = Submodule::where('module_id', $module_id)->get();
         $materials = Lesson::where('module_id', $module_id)->get();
+
         $homeWorks = HomeworkFile::where('module_id', $module_id)->get();
 
         $homeWorkStatuses = HomeworkStatuse::pluck('name', 'id');
@@ -95,8 +104,8 @@ class LearningController extends Controller
 
     public function uploadHomework(Request $request)
     {
-        Log::info(json_encode($request->all()));
-        Log::info('uploadHomework: submodule_id=' . $request->input('submodule_id'));
+        // Log::info(json_encode($request->all()));
+        // Log::info('uploadHomework: submodule_id=' . $request->input('submodule_id'));
 
         $user_id = 1;
         $status_id = 1;
@@ -123,13 +132,32 @@ class LearningController extends Controller
 
         $filePath = $file->storeAs('homeworkSubmissions', $fileName, 'public');
 
-        HomeworkSubmission::create([
-            'user_id' => $user_id,
-            'submodule_id' => $request->submodule_id, // Укажите ID подмодуля
-            'path_url' => $filePath, //$fileName
-            'status_id' => $status_id,
+        $isHomeWork = HomeworkSubmission::where('user_id', $user_id)
+            ->where('submodule_id', $request->submodule_id)
+            ->exists();
 
-        ]);
+        if($isHomeWork){
+            Log::info($request->submodule_id);
+
+            HomeworkSubmission::where('user_id', $user_id)
+            ->where('submodule_id', $request->submodule_id)
+            ->update([
+                'path_url' => $filePath, 
+                'deadline' => 0,  
+                'status_id' => 1,  
+                'updated_at' => now(), 
+            ]);
+        }
+        else{
+            HomeworkSubmission::create([
+                'user_id' => $user_id,
+                'submodule_id' => $request->submodule_id, // Укажите ID подмодуля
+                'path_url' => $filePath, //$fileName
+                'status_id' => $status_id,
+    
+            ]);
+        }
+       
 
         return redirect()->back()->with('success', 'Файл не загружен.');
     }
