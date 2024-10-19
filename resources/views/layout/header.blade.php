@@ -32,7 +32,7 @@
               </ul>
             </li>
           </ul>
-          <ul class="header-left">
+          {{-- <ul class="header-left">
             <li class="onhover-dropdown"><span class="f-w-600">Dashboard</span><span><i class="middle"
                   data-feather="chevron-down"></i></span>
               <ul class="onhover-show-div left-dropdown">
@@ -40,89 +40,7 @@
                 <li> <a href="{{ route('ecommerce_dashboard') }}"> Ecommerce</a></li>
               </ul>
             </li>
-            <li class="onhover-dropdown"><span class="f-w-600">Application</span><span><i class="middle"
-                  data-feather="chevron-down"></i></span>
-              <ul class="onhover-show-div left-dropdown">
-                <li class="flyout-right"><a href="javascript:void(0)">Project</a>
-                  <ul>
-                    <li> <a href="{{ route('projects') }}">Project List</a></li>
-                    <li> <a href="{{ route('project_create') }}">Project Create</a></li>
-                  </ul>
-                </li>
-                <li><a href="{{ route('file_manager') }}">File manager</a></li>
-                <li><a href="{{ route('kanban') }}">kanban</a></li>
-                <li class="flyout-right"><a href="javascript:void(0)">Ecommerce</a>
-                  <ul>
-                    <li> <a href="{{ route('product') }}">Product</a></li>
-                    <li> <a href="{{ route('product_page') }}">Product Page</a></li>
-                    <li> <a href="{{ route('list_products') }}">Product List</a></li>
-                    <li> <a href="{{ route('payment_details') }}">Payment Details</a></li>
-                    <li> <a href="{{ route('order_history') }}">Order History</a></li>
-                    <li> <a href="{{ route('invoice_template') }}">Invoice</a></li>
-                    <li> <a href="{{ route('cart') }}">Cart</a></li>
-                    <li> <a href="{{ route('list_wish') }}">Wishlist</a></li>
-                    <li> <a href="{{ route('checkout') }}">Checkout</a></li>
-                    <li> <a href="{{ route('pricing') }}">Pricing </a></li>
-                  </ul>
-                </li>
-                <li class="flyout-right"><a href="javascript:void(0)">Email</a>
-                  <ul>
-                    <li> <a href="{{ route('email_inbox') }}">Mail Inbox</a></li>
-                    <li> <a href="{{ route('email_read') }}">Read Mail</a></li>
-                    <li> <a href="{{ route('email_compose') }}">Compose</a></li>
-                  </ul>
-                </li>
-                <li class="flyout-right"><a href="javascript:void(0)">Chat</a>
-                  <ul>
-                    <li> <a href="{{ route('chat') }}">Chat App</a></li>
-                    <li> <a href="{{ route('chat_video') }}">Video Chat</a></li>
-                  </ul>
-                </li>
-                <li class="flyout-right"><a href="javascript:void(0)">Users</a>
-                  <ul>
-                    <li> <a href="{{ route('user_profile') }}">User Profile</a></li>
-                    <li> <a href="{{ route('edit_profile') }}">Users Edit</a></li>
-                    <li> <a href="{{ route('user_cards') }}">User Cards</a></li>
-                  </ul>
-                </li>
-                <li><a href="{{ route('bookmark') }}">Bookmarks</a></li>
-                <li><a href="{{ route('contacts') }}">Contacts</a></li>
-                <li><a href="{{ route('social_app') }}">Social App</a></li>
-              </ul>
-            </li>
-            <li class="onhover-dropdown"> <span class="f-w-600">More pages</span><span><i class="middle"
-                  data-feather="chevron-down"></i></span>
-              <ul class="onhover-show-div left-dropdown">
-                <li><a href="{{ route('landing_page') }}">Landing Page</a></li>
-                <li><a href="{{ route('sample_page') }}">Sample Page</a></li>
-                <li><a href="{{ route('internationalization') }}">Internationalization</a></li>
-                <li class="flyout-right"><a href="javascript:void(0)">Starter-Kit</a>
-                  <ul>
-                    <li class="flyout-right"><a href="javascript:void(0)">Color version</a>
-                      <ul>
-                        <li> <a href="#">Layout Light</a></li>
-                        <li> <a href="#">Layout Dark</a></li>
-                      </ul>
-                    </li>
-                    <li class="flyout-right"><a href="javascript:void(0)">Page Layout</a>
-                      <ul>
-                        <li> <a href="#">Boxed</a></li>
-                        <li> <a href="#">RTL</a></li>
-                      </ul>
-                    </li>
-                    <li> <a href="#">Hide Menu On Scroll</a></li>
-                    <li class="flyout-right"><a href="javascript:void(0)">Footers</a>
-                      <ul>
-                        <li> <a href="#">Footer Light</a></li>
-                        <li> <a href="#">Footer Dark </a></li>
-                        <li> <a href="#">Footer Fixed</a></li>
-                      </ul>
-                    </li>
-                  </ul>
-                </li>
-              </ul>
-            </li>
-          </ul>
+          </ul> --}}
         </div>
       </div>
       <div class="nav-right col-6 pull-right right-header p-0">
