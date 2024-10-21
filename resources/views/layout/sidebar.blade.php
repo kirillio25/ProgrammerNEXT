@@ -254,7 +254,7 @@
                         </ul>
                       </div>
                     </div>
-                    <div class="col mega-box">
+                    {{-- <div class="col mega-box">
                       <div class="link-section">
                         <div class="submenu-title">
                           <h5> Authentication</h5>
@@ -270,7 +270,7 @@
                           <li><a href="{{ route('maintenance') }}">Maintenance</a></li>
                         </ul>
                       </div>
-                    </div>
+                    </div> --}}
                     <div class="col mega-box">
                       <div class="link-section">
                         <div class="submenu-title">

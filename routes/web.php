@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LearningController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,9 +17,9 @@ use App\Http\Controllers\LearningController;
 */
 
 //Dashboards
-Route::get('/', function () {
-    return redirect()->route('dashboard');
-});
+// Route::get('/', function () {
+//     return redirect()->route('dashboard');
+// });
 
 Route::prefix('dashboard')->group(function () {
 Route::view('/', 'dashboards.default_dashboard')->name('dashboard');
@@ -251,18 +253,33 @@ Route::view('error-page3', 'others.error_pages.error_page3')->name('error_page3'
 Route::view('error-page4', 'others.error_pages.error_page4')->name('error_page4');
 Route::view('error-page5', 'others.error_pages.error_page5')->name('error_page5');
 
-//others -> authentication
-Route::view('login', 'others.authentication.login')->name('login');
-Route::view('login-bs-validation', 'others.authentication.login_bs_validation')->name('login_bs_validation');
-Route::view('login-bs-tt-validation', 'others.authentication.login_bs_tt_validation')->name('login_bs_tt_validation');
-Route::view('login-sa-validation', 'others.authentication.login_sa_validation')->name('login_sa_validation');
-Route::view('sign-up', 'others.authentication.sign_up')->name('sign_up');
-Route::view('sign-up-one', 'others.authentication.sign_up_one')->name('sign_up_one');
-Route::view('sign-up-two', 'others.authentication.sign_up_two')->name('sign_up_two');
-Route::view('unlock', 'others.authentication.unlock')->name('unlock');
-Route::view('forget-password', 'others.authentication.forget_password')->name('forget_password');
-Route::view('reset-password', 'others.authentication.reset_password')->name('reset_password');
-Route::view('maintenance', 'others.authentication.maintenance')->name('maintenance');
+
+// Route::get('/', function () {
+//     return redirect()->route('dashboard');
+// });
+// authentication
+Route::middleware(['auth'])->group(function () {
+    Route::get('/', function () {
+        return redirect()->route('dashboard');
+    });
+});
+
+Route::get('login', [LoginController::class, 'showLoginForm'])->name('login');
+Route::post('login', [LoginController::class, 'login']);
+Route::post('logout', [LoginController::class, 'logout'])->name('logout');
+Route::get('register', [RegisterController::class, 'showRegistrationForm'])->name('register');
+Route::post('register', [RegisterController::class, 'register']);
+// Route::view('login', 'others.authentication.login')->name('login');
+// Route::view('login-bs-validation', 'others.authentication.login_bs_validation')->name('login_bs_validation');
+// Route::view('login-bs-tt-validation', 'others.authentication.login_bs_tt_validation')->name('login_bs_tt_validation');
+// Route::view('login-sa-validation', 'others.authentication.login_sa_validation')->name('login_sa_validation');
+// Route::view('sign-up', 'others.authentication.sign_up')->name('sign_up');
+// Route::view('sign-up-one', 'others.authentication.sign_up_one')->name('sign_up_one');
+// Route::view('sign-up-two', 'others.authentication.sign_up_two')->name('sign_up_two');
+// Route::view('unlock', 'others.authentication.unlock')->name('unlock');
+// Route::view('forget-password', 'others.authentication.forget_password')->name('forget_password');
+// Route::view('reset-password', 'others.authentication.reset_password')->name('reset_password');
+// Route::view('maintenance', 'others.authentication.maintenance')->name('maintenance');
 
 //others -> coming_soon
 Route::view('comingsoon', 'others.coming_soon.comingsoon')->name('comingsoon');
