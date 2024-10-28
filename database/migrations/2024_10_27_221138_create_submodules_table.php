@@ -17,15 +17,12 @@ return new class extends Migration
             $table->string('title', 255);
             $table->integer('module_id')->unsigned();
             $table->boolean('is_active');
+            $table->text('path_url'); // Добавлено поле path_url
             $table->timestamp('created_at')->nullable()->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->nullable()->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
-
-            // Первичный ключ на поле `id` добавляется автоматически с autoIncrement
-
-            // Индекс на поле `module_id`
+    
+            // Индекс и внешний ключ на поле `module_id`
             $table->index('module_id', 'submodule_module');
-
-            // Внешний ключ на поле `module_id`, ссылающийся на `id` в таблице `modules`
             $table->foreign('module_id', 'submodule_module')
                   ->references('id')
                   ->on('modules')
