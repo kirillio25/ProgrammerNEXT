@@ -19,8 +19,8 @@ return new class extends Migration
             $table->integer('price')->nullable();
             $table->boolean('is_active');
             $table->text('path_url');
-            $table->timestamp('create_at')->useCurrent();
-            $table->timestamp('update_at')->nullable();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->nullable();
         });
     }
 
