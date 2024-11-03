@@ -1,6 +1,6 @@
 <template>
     <div>
-        <Index></Index>
+        я гет
     </div>
 </template>
 
